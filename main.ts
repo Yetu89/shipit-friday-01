@@ -154,7 +154,9 @@ function main(): void {
   // If this ever fails, the program throws instead of claiming success.
   const roundTrip = readFileSync(outPath, "utf8");
   if (roundTrip !== TEXT) {
-    throw new Error("round-trip check failed: entry.txt differs from TEXT");
+    throw new Error(
+      `round-trip check failed: entry.txt (${roundTrip.length} chars) differs from TEXT (${TEXT.length} chars)`,
+    );
   }
 
   // Only logged after the round-trip has passed, so this line is a true
